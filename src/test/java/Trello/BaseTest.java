@@ -5,7 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.BeforeAll;
 
-public class Base_test {
+public class BaseTest {
 
     protected static final String BASE_URL = "https://api.trello.com/1/";
     protected static final String ORGANIZATIONS = "organizations";

@@ -13,9 +13,9 @@ import java.util.stream.Stream;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Organization_Test extends Base_test {
+public class Organization_Test extends BaseTest {
 
-    private static Stream<Arguments> createOrganizationWithDefaultDate() {
+    private static Stream<Arguments> createOrganizationWithInvalidName() {
 
         return Stream.of(
                 Arguments.of("zzzzzz", "learning", "szkoła testowania", "https://szkolatestowania.pl"),
@@ -25,10 +25,10 @@ public class Organization_Test extends Base_test {
                 Arguments.of("BIG LETTERS", "learning", "szkoła testowania", "https://szkolatestowania.pl"));
     }
 
-    @DisplayName("Create organization with default date")
+    @DisplayName("Create organization with invalid name")
     @ParameterizedTest(name = "Display name: {0}, desc:{1}, name {2}, website {3}")
-    @MethodSource("createOrganizationWithDefaultDate")
-    public void createOrganizationWithDefaultDate(String displayName, String desc, String name, String website) {
+    @MethodSource("createOrganizationWithInvalidName")
+    public void createOrganizationWithInvalidName(String displayName, String desc, String name, String website) {
 
         Organization organization = new Organization();
         organization.setDisplayName(displayName);
@@ -45,7 +45,7 @@ public class Organization_Test extends Base_test {
                 .when()
                 .post(BASE_URL + ORGANIZATIONS)
                 .then()
-                .statusCode(HttpStatus.SC_OK) //tu powinien być "statusCode 400", ale Trello przepuszcza nazwy użytkownika, które powinne wywoływać błą
+                .statusCode(HttpStatus.SC_BAD_REQUEST) //działanie Trello jest niezgodne z dokumentacją, dlatego test nie przechodzi
                 .extract()
                 .response();
 
