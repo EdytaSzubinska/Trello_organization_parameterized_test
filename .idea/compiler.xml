@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Trello_zadanie_domowe_modul_14" />
+        <module name="TrelloZadanieDomoweModul14" />
       </profile>
     </annotationProcessing>
   </component>

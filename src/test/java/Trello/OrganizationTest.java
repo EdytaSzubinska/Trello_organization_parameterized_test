@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Organization_Test extends BaseTest {
+public class OrganizationTest extends BaseTest {
 
     private static Stream<Arguments> createOrganizationWithInvalidName() {
 
